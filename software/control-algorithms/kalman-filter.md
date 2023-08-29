@@ -48,7 +48,7 @@ def update(state, var, measurement):
   residual = measurement - state
   kalman_gain = var / (var + MEASUREMENT_VAR)
 
-  new_state = state + kalman_gain
+  new_state = state + kalman_gain * residual 
   new_var = (1 - kalman_gain) * var
   return new_state, new_var
 
